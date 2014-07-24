@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href={% static "css/index.css" %}>
+</head>
+<body>
+    <h1>GIFs of Twits</h1>
+
+    {% for gif in gifs %}
+
+        <p>{{ gif.0 }}</p>
+        <img src="{{ gif.1 }}">
+
+    {% endfor %}
+
+    <img src="{% static 'img/API_Larger_Grey_Trans_BG_once.gif' %}">
+
+</body>
+</html>
