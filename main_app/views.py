@@ -23,7 +23,7 @@ def get_trends():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
-    trends1 = api.trends_place(2450022)
+    trends1 = api.trends_place(2450022) #2450022
     data = trends1[0]
     trends = data['trends']
     trend_names = [trend['name'] for trend in trends]
