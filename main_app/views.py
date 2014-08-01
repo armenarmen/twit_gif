@@ -11,6 +11,7 @@ from giphypop import Giphy
 from memoize import memoize
 
 # keys here
+# Should put these all in settings.py
 consumer_key='Y1a564pRXuGwA5yILOpOuSSOz'
 consumer_secret='panvWIWqMWIDmR1rQGyHK1Wu62IvSBl8OsWxs2YnLjejtqaWc3'
 
@@ -23,6 +24,7 @@ def get_trends():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
+    # better variable naming, putting numbers in the variable name is a no-no
     trends1 = api.trends_place(2450022) #2450022
     data = trends1[0]
     trends = data['trends']
@@ -65,6 +67,8 @@ def trends_to_gifs(request):
     trends = get_trends()
     # makes an instance of Pool that takes the length of trends, lets it know how many
     # threads that there will be.
+    
+    # nice job on messing with multiprocessing stuff and using map and zip
     pool = Pool(len(trends))
     # me create a var gifs, this is map from pool, which takes a function, and list of trends, then magic
     gifs = pool.map(heuristic_get_gifs, trends)
